@@ -1,0 +1,141 @@
+/* theme.css
+   A visual layer for the clothing store. It restyles existing pages by element,
+   attribute and class selectors, so no component files need to change.
+   Load it AFTER globals.css (see the one-line import in layout.tsx). */
+
+:root {
+  --paper: #e9eef6;  /* page background: change this one line to try other colours */
+  --ink: #151a2e;
+  --dye: #2b3a8c;   /* indigo, like denim */
+  --pine: #1f4d3a;
+  --sun: #f0c33c;
+  --line: #c5cedd;
+  --muted: #5b6b82;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+
+/* ---------- Base ---------- */
+html body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+html body :focus-visible { outline: 2px solid var(--dye); outline-offset: 2px; }
+
+html body main h1,
+html body main h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+html body main h1 { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.1; }
+html body main h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+/* ---------- Header ---------- */
+html body header { background: var(--paper); border-bottom: 1px solid var(--line); }
+html body header > div { max-width: 80rem; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+html body header a[href="/"] {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+html body header nav a { text-underline-offset: 0.35em; }
+html body header nav a:hover { text-decoration: underline; }
+
+/* ---------- Page width and spacing ---------- */
+html body main { max-width: 80rem; padding-top: 2.5rem; }
+
+/* ---------- Home: category panels ---------- */
+html body main section.grid { gap: 0.75rem; }
+html body main section.grid > a {
+  height: auto;
+  min-height: 220px;
+  align-items: flex-end;
+  padding: 1.5rem;
+  border-radius: 0;
+  color: #fff;
+  font-family: var(--display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  html body main section.grid > a { min-height: 340px; }
+}
+html body main section.grid > a:nth-child(1) { background: var(--dye); }
+html body main section.grid > a:nth-child(2) { background: var(--pine); }
+html body main section.grid > a:nth-child(3) { background: var(--sun); color: var(--ink); }
+html body main section.grid > a:hover { text-decoration: underline; text-underline-offset: 0.3em; }
+
+/* ---------- Product grids ---------- */
+html body main > div > div.grid.grid-cols-2 { column-gap: 1rem; row-gap: 2rem; }
+
+html body main a[href^="/product/"] > div:first-child {
+  aspect-ratio: 4 / 5;
+  border-radius: 0;
+  background: #d5dce9;
+}
+html body main a[href^="/product/"] img { transition: transform 0.5s ease; }
+html body main a[href^="/product/"]:hover img { transform: scale(1.04); }
+html body main a[href^="/product/"] > p:nth-of-type(1) {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+html body main a[href^="/product/"] > p:nth-of-type(2) { font-size: 0.9375rem; font-weight: 500; line-height: 1.3; }
+
+/* ---------- Photos (gallery and cards) ---------- */
+html body main img { border-radius: 0; }
+html body main img[class*="aspect-"] { aspect-ratio: 4 / 5; }
+
+/* ---------- Category filter chips ---------- */
+html body main a.rounded-full {
+  border-radius: 2px;
+  border-color: var(--line);
+  padding: 0.35rem 0.9rem;
+}
+html body main a.rounded-full.bg-moss { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* ---------- Buttons and inputs ---------- */
+html body .btn {
+  background: var(--ink);
+  border-radius: 2px;
+  padding: 0.8rem 1.3rem;
+  font-weight: 500;
+  transition: background-color 0.15s;
+}
+html body .btn:hover { background: var(--dye); }
+
+html body a.btn[href^="https://wa.me"] {
+  display: block;
+  background: #128c4a;
+  padding: 0.95rem 1.5rem;
+  text-align: center;
+}
+html body a.btn[href^="https://wa.me"]:hover { background: #0e6f3b; }
+
+html body .input { border-radius: 2px; border-color: #b9c4d6; padding: 0.65rem 0.75rem; }
+html body .input:focus { border-color: var(--ink); outline: none; }
+
+/* ---------- Feedback ---------- */
+html body main section.border-t { margin-top: 4rem; padding-top: 2.5rem; border-color: var(--line); }
+html body main section.border-t ul li { padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+html body .text-moss { color: var(--dye); }
+
+/* ---------- Footer ---------- */
+html body footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  border: 0;
+  background: var(--ink);
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+html body footer a:hover { color: #fff; }
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html body * { transition: none !important; }
+}

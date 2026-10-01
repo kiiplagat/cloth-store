@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { CATEGORIES, STORE_NAME } from "@/lib/constants";
-
+   import "./globals.css";
+   import "./theme.css";
 export const metadata: Metadata = {
   title: STORE_NAME,
   description: "Browse our clothing and order through WhatsApp.",
