@@ -15,7 +15,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="border-b border-stone-200">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-            <Link href="/" className="font-serif text-xl">{STORE_NAME}</Link>
+            <Link href="/" className="flex items-center gap-2 font-serif text-xl">
+  {STORE_NAME}
+  {/* eslint-disable-next-line @next/next/no-img-element */}
+  <img src="/icon.jpeg" alt="" className="h-9 w-9 rounded-full border border-[#c9a24b] object-cover" />
+</Link>
             <nav className="flex gap-5 text-sm">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} href={`/${c.slug}`} className="hover:underline">{c.label}</Link>
