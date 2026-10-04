@@ -139,3 +139,12 @@ html body footer a:hover { color: #fff; }
 @media (prefers-reduced-motion: reduce) {
   html body * { transition: none !important; }
 }
+/* smaller category panels on the home page */
+html body main section.grid > a {
+  min-height: 110px;
+  padding: 1rem 1.25rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+@media (min-width: 768px) {
+  html body main section.grid > a { min-height: 140px; }
+}
